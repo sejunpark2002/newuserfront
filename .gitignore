@@ -1,0 +1,8 @@
+# Ignore environment variable files
+.env
+
+# Ignore build folder
+build/
+node_modules/
+
+src/firebase.config.js
