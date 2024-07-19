@@ -1,17 +1,13 @@
-import {USER_ACTION} from './constant'
+import { USER_ACTION } from './constant';
 import { produce } from 'immer';
-import { Reducer } from 'redux';
 
-const {CREATE_USER, SET_DEFAULT_USER} = USER_ACTION
+const { CREATE_USER, SET_DEFAULT_USER } = USER_ACTION;
 
-const INITIAL_STATE= {
+const INITIAL_STATE = {
   userList: [],
- 
-}
+};
 
-
-const userReducer = (
-  state = INITIAL_STATE, action) => {
+const userReducer = (state = INITIAL_STATE, action) => {
   return produce(state, (draft) => {
     const { type, payload } = action;
 

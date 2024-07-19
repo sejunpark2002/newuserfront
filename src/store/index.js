@@ -1,11 +1,9 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { useSelector, useDispatch } from 'react-redux';
-import { all } from 'redux-saga/effects';
-import createSagaMiddleware from 'redux-saga';
+// import { all } from 'redux-saga/effects';
+// import createSagaMiddleware from 'redux-saga';
 // import { todoSagaWatcher } from 'redux/todo/todoSaga';
-import userReducer from '../redux/userReducer'
-
-
+import userReducer from '../redux/userReducer';
 
 // const sagaMiddleware = createSagaMiddleware();
 
@@ -19,7 +17,6 @@ import userReducer from '../redux/userReducer'
 export const createStore = () =>
   configureStore({
     reducer: {
-      
       userReducer,
       // Other reducers...
     },

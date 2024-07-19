@@ -23,7 +23,7 @@ export default function BasicTable() {
           color: '#1A191D',
         }}
       >
-        New Uers
+        New Developers
       </Typography>
       <TableContainer
         component={Paper}
@@ -31,30 +31,33 @@ export default function BasicTable() {
       >
         <Table sx={{ minWidth: 300, border: 'none' }} aria-label="simple table">
           <TableBody>
-            {userList.slice(-5).map((user) => (
-              <TableRow
-                key={user.id}
-                sx={{
-                  '&:last-child td, &:last-child th': { border: 0 },
-                  borderBottom: '1px solid rgba(224, 224, 224, 1)',
-                }}
-              >
-                <TableCell
-                  component="th"
-                  scope="row"
+            {userList
+              .filter((user) => user.role === 'developer')
+              .slice(-5)
+              .map((user) => (
+                <TableRow
+                  key={user.id}
                   sx={{
-                    padding: '6px',
-                    borderBottom: 'none',
-                    paddingLeft: '20px',
+                    '&:last-child td, &:last-child th': { border: 0 },
+                    borderBottom: '1px solid rgba(224, 224, 224, 1)',
                   }}
                 >
-                  <Avatar alt="profie pic" src={user.imageUrl} />
-                </TableCell>
-                <TableCell sx={{ padding: '6px', borderBottom: 'none' }}>
-                  {user.name}
-                </TableCell>
-              </TableRow>
-            ))}
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    sx={{
+                      padding: '6px',
+                      borderBottom: 'none',
+                      paddingLeft: '20px',
+                    }}
+                  >
+                    <Avatar alt="profie pic" src={user.imageUrl} />
+                  </TableCell>
+                  <TableCell sx={{ padding: '6px', borderBottom: 'none' }}>
+                    {user.name}
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

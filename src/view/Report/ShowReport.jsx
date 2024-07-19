@@ -1,53 +1,49 @@
-import React from 'react'
-import { Box, Stack} from '@mui/system'
-import {useAppDispatch,useAppSelector} from '../../store';
+import React from 'react';
+import { Box, Stack } from '@mui/system';
+import { useAppSelector } from '../../store';
 import { Typography } from '@mui/material';
-import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
-
+import ShowNumberComp from './ShowNumberComp';
+import ShowPieChart from './ShowPieChart';
 
 const ShowReport = () => {
-
-  const {userList} = useAppSelector((state)=> state.userReducer)
-  const totalusers = userList.length
+  const { userList } = useAppSelector((state) => state.userReducer);
+  const totalusers = userList.length;
+  const totalmanagers = userList.filter(
+    (user) => user.role === 'manager'
+  ).length;
+  const totaldevelopers = userList.filter(
+    (user) => user.role === 'developer'
+  ).length;
+  const totaldesigners = userList.filter(
+    (user) => user.role === 'designers'
+  ).length;
 
   return (
     <>
-      <Box  sx={{padding:"24px 64px 0 64px"}}>
-      <Typography sx={{fontSize:"22px",fontFamily:'Inter',fontWeight:"800",color:"#1A191D"}}>Report</Typography>
-      <Stack direction="row" spacing={3} mt={"50px"}>
-      <Box 
-            sx={{
-              backgroundColor:"#FFFFFF",
-              boxShadow: 2,
-              borderRadius:"16px",
-              padding:"20px",
-            }}>
-              <Stack direction="row" spacing={3} alignItems="center">
-                <PeopleOutlineIcon sx={{fontSize:"50px",borderRadius:"5px"}}/>
-                <Stack textAlign="center">
-                  <Typography sx={{fontSize:"40px",fontFamily:'Inter',fontWeight:"600",color:"#1A191D"}}>{totalusers}</Typography>
-                  <Typography sx={{fontSize:"20px",fontFamily:'Inter',fontWeight:"600",color:"#1A191D"}}>Total Users</Typography>
-                </Stack>
-              </Stack>
-
-        </Box>
-        <Box 
-            sx={{
-              backgroundColor:"#FFFFFF",
-              boxShadow: 2,
-              borderRadius:"16px",
-              padding:"20px",
-              
-
-            }}>
-           hello
-        </Box>
-      </Stack>
-    </Box>
+      <Box sx={{ padding: '24px 64px 0 64px' }}>
+        <Typography
+          sx={{
+            fontSize: '22px',
+            fontFamily: 'Inter',
+            fontWeight: '800',
+            color: '#1A191D',
+          }}
+        >
+          Report
+        </Typography>
+        <Stack direction="row" spacing={3} mt={'50px'}>
+          <ShowNumberComp title={'Total Users'} number={totalusers} />
+          <ShowNumberComp title={'Total Managers'} number={totalmanagers} />
+          <ShowNumberComp title={'Total Developers'} number={totaldevelopers} />
+          <ShowNumberComp title={'Total Designers'} number={totaldesigners} />
+        </Stack>
+        <Stack direction="row" spacing={3} mt={'50px'}>
+          <ShowPieChart />
+          <ShowPieChart />
+        </Stack>
+      </Box>
     </>
-  )
-}
+  );
+};
 
-export default ShowReport
-
-
+export default ShowReport;

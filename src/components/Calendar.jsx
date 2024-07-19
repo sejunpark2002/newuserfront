@@ -3,7 +3,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { styled } from '@mui/system';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import dayjs from 'dayjs';
 
 const CustomDateCalendar = styled(DateCalendar)(({ theme }) => ({
@@ -34,9 +34,9 @@ export default function Calendar() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-        <CustomDateCalendar 
+        <CustomDateCalendar
           views={['year', 'month', 'day']}
-          showDaysOutsideCurrentMonth={false} 
+          showDaysOutsideCurrentMonth={false}
           defaultCalendarMonth={dayjs('2024-07-01')}
         />
       </Box>
