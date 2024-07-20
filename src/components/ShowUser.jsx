@@ -1,45 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+// import useState from 'react';
+// import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import PortfolioBox from './PortfolioBox';
 import InputModal from './InputModal';
 import Stack from '@mui/material/Stack';
 import { Typography } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../store';
-import { createUserAction } from '../redux/userAction';
-
+import { useAppSelector } from '../store';
+// import { useAppDispatch, useAppSelector } from '../store';
+// import { createUserAction } from '../redux/userAction';
+// import { getUserAPI } from '../api/getUserApi';
 const ShowUser = () => {
   const { userList } = useAppSelector((state) => state.userReducer);
-  const dispatch = useAppDispatch();
 
-  const [loading, setLoading] = useState(true);
+  // const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const getUsersAPI = async () => {
-      try {
-        const res = await fetch(`${process.env.REACT_APP_API_ADDRESS_DEV}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const { result } = await res.json();
-        console.log(result);
-        dispatch(createUserAction(result));
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-        setLoading(false);
-      }
-    };
-    getUsersAPI();
-  }, []);
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const showUsers = async () => {
+  //     try {
+  //       const result = await getUserAPI();
+  //       console.log(result);
+  //       dispatch(createUserAction(result));
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching users:', error);
+  //       setLoading(false);
+  //     }
+  //   };
+  //   showUsers();
+  // }, []);
 
   if (!userList) {
     return;
   }
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
   return (
     <>
       <Stack

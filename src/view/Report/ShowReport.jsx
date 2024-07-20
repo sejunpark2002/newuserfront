@@ -4,6 +4,7 @@ import { useAppSelector } from '../../store';
 import { Typography } from '@mui/material';
 import ShowNumberComp from './ShowNumberComp';
 import ShowPieChart from './ShowPieChart';
+import ShowLineChart from './ShowLineChart';
 
 const ShowReport = () => {
   const { userList } = useAppSelector((state) => state.userReducer);
@@ -17,6 +18,9 @@ const ShowReport = () => {
   const totaldesigners = userList.filter(
     (user) => user.role === 'designers'
   ).length;
+
+  const rolelabel = ['manager', 'developer', 'designer'];
+  const genderlabel = ['female', 'male', 'nonbinary'];
 
   return (
     <>
@@ -38,9 +42,18 @@ const ShowReport = () => {
           <ShowNumberComp title={'Total Designers'} number={totaldesigners} />
         </Stack>
         <Stack direction="row" spacing={3} mt={'50px'}>
-          <ShowPieChart />
-          <ShowPieChart />
+          <ShowPieChart
+            title={'Users by roles'}
+            data={userList}
+            label={rolelabel}
+          />
+          <ShowPieChart
+            title={'Users by gender'}
+            data={userList}
+            label={genderlabel}
+          />
         </Stack>
+        <ShowLineChart />
       </Box>
     </>
   );

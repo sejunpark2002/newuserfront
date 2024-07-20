@@ -1,8 +1,17 @@
 import * as React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
-const ShowPieChart = () => {
+const ShowPieChart = ({ title, data, label }) => {
+  const totalmanagers = data.filter((user) => user.role === 'manager').length;
+  const totaldevelopers = data.filter(
+    (user) => user.role === 'developer'
+  ).length;
+  const totaldesigners = data.filter(
+    (user) => user.role === 'designers'
+  ).length;
+
   return (
     <Box
       sx={{
@@ -12,13 +21,25 @@ const ShowPieChart = () => {
         padding: '20px',
       }}
     >
+      <Typography
+        sx={{
+          fontSize: '20px',
+          fontFamily: 'Inter',
+          fontWeight: '600',
+          color: '#1A191D',
+          mb: '30px',
+        }}
+      >
+        {title}
+      </Typography>
+
       <PieChart
         series={[
           {
             data: [
-              { id: 0, value: 1, label: 'series A' },
-              { id: 1, value: 1, label: 'series B' },
-              { id: 2, value: 1, label: 'series C' },
+              { id: 0, value: totalmanagers, label: label[0] },
+              { id: 1, value: totaldevelopers, label: label[1] },
+              { id: 2, value: totaldesigners, label: label[2] },
             ],
           },
         ]}
