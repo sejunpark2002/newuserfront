@@ -9,6 +9,7 @@ import ShowLineChart from './ShowLineChart';
 const ShowReport = () => {
   const { userList } = useAppSelector((state) => state.userReducer);
   const totalusers = userList.length;
+
   const totalmanagers = userList.filter(
     (user) => user.role === 'manager'
   ).length;
@@ -16,11 +17,31 @@ const ShowReport = () => {
     (user) => user.role === 'developer'
   ).length;
   const totaldesigners = userList.filter(
-    (user) => user.role === 'designers'
+    (user) => user.role === 'designer'
   ).length;
 
-  const rolelabel = ['manager', 'developer', 'designer'];
-  const genderlabel = ['female', 'male', 'nonbinary'];
+  const totalfemale = userList.filter(
+    (user) => user.gender === 'female'
+  ).length;
+  const totalmale = userList.filter((user) => user.gender === 'male').length;
+  const totalnonbinary = userList.filter(
+    (user) => user.gender === 'nonbinary'
+  ).length;
+
+  const numberbyroles = {
+    manager: totalmanagers,
+    developer: totaldevelopers,
+    designer: totaldesigners,
+  };
+
+  const numberbygender = {
+    female: totalfemale,
+    male: totalmale,
+    nonbindary: totalnonbinary,
+  };
+
+  // const rolelabel = ['manager', 'developer', 'designer'];
+  // const genderlabel = ['female', 'male', 'nonbinary'];
 
   return (
     <>
@@ -42,18 +63,12 @@ const ShowReport = () => {
           <ShowNumberComp title={'Total Designers'} number={totaldesigners} />
         </Stack>
         <Stack direction="row" spacing={3} mt={'50px'}>
-          <ShowPieChart
-            title={'Users by roles'}
-            data={userList}
-            label={rolelabel}
-          />
-          <ShowPieChart
-            title={'Users by gender'}
-            data={userList}
-            label={genderlabel}
-          />
+          <ShowPieChart title={'Users by roles'} data={numberbyroles} />
+          <ShowPieChart title={'Users by gender'} data={numberbygender} />
         </Stack>
-        <ShowLineChart />
+        <Box mt={'50px'} width={'500px'}>
+          <ShowLineChart />
+        </Box>
       </Box>
     </>
   );

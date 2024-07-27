@@ -13,6 +13,9 @@ import {
 import { useAppDispatch } from '../store';
 import { createUserAction } from '../redux/userAction';
 import { getUserAPI } from '../api/getUserApi';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const UpdateUser = ({ selecteduser, onClose }) => {
   const dispatch = useAppDispatch();
@@ -21,6 +24,8 @@ const UpdateUser = ({ selecteduser, onClose }) => {
     name: selecteduser.name,
     email: selecteduser.email,
     phone: selecteduser.phone,
+    role: selecteduser.role,
+    gender: selecteduser.gender,
   });
 
   const [image, setImage] = useState(null);
@@ -62,6 +67,8 @@ const UpdateUser = ({ selecteduser, onClose }) => {
         name: userInfo.name,
         email: userInfo.email,
         phone: userInfo.phone,
+        gender: userInfo.gender,
+        role: userInfo.role,
         imageUrl: imageUrl,
         imagePath: imgPath,
         timeCreated: selecteduser.timeCreated,
@@ -119,6 +126,42 @@ const UpdateUser = ({ selecteduser, onClose }) => {
           size="small"
           sx={{ width: '100%', height: '34px', mb: '20px' }}
         />
+        <Typography sx={{ color: '#344054', fontSize: '13px' }} mb={'5px'}>
+          Gender
+        </Typography>
+        <FormControl fullWidth>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            name="gender"
+            value={userInfo.gender}
+            label="Age"
+            onChange={changeUserInfo}
+            sx={{ height: 40, mb: '20px' }}
+          >
+            <MenuItem value={'female'}>Female</MenuItem>
+            <MenuItem value={'male'}>Male</MenuItem>
+            <MenuItem value={'nonbinary'}>Nonbinary</MenuItem>
+          </Select>
+        </FormControl>
+        <Typography sx={{ color: '#344054', fontSize: '13px' }} mb={'5px'}>
+          Role
+        </Typography>
+        <FormControl fullWidth>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            name="role"
+            value={userInfo.role}
+            label="Age"
+            onChange={changeUserInfo}
+            sx={{ height: 40, mb: '20px' }}
+          >
+            <MenuItem value={'manager'}>Manager</MenuItem>
+            <MenuItem value={'developer'}>Developer</MenuItem>
+            <MenuItem value={'designer'}>Designer</MenuItem>
+          </Select>
+        </FormControl>
         <Typography sx={{ color: '#344054', fontSize: '13px' }} mb={'5px'}>
           Profile Picture
         </Typography>

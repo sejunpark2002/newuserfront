@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import { LineChart } from '@mui/x-charts/LineChart';
 
 const ShowLineChart = () => {
-  const months = [
+  const xLabels = [
     'Jan',
     'Feb',
     'Mar',
@@ -11,7 +11,7 @@ const ShowLineChart = () => {
     'May',
     'Jun',
     'Jul',
-    'Aug',
+    'Agu',
     'Sep',
     'Oct',
     'Nov',
@@ -28,13 +28,7 @@ const ShowLineChart = () => {
       }}
     >
       <LineChart
-        xAxis={[
-          {
-            data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-            label: 'Month',
-            tickFormat: (tick) => months[tick - 1], // Format ticks to display month labels
-          },
-        ]}
+        xAxis={[{ scaleType: 'point', data: xLabels, label: 'Month' }]}
         yAxis={[
           {
             min: 0,

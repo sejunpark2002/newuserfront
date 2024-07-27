@@ -37,6 +37,7 @@ const App = () => {
               borderRight={1}
               item
               xs={12}
+              sm={12}
               lg={2}
               sx={{
                 borderColor: '#D0D5DD',
@@ -49,6 +50,7 @@ const App = () => {
             <Grid
               item
               xs={12}
+              sm={12}
               lg={10}
               sx={{ backgroundColor: '#FAFAFC', flexGrow: 1 }}
             >

@@ -3,14 +3,8 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 
-const ShowPieChart = ({ title, data, label }) => {
-  const totalmanagers = data.filter((user) => user.role === 'manager').length;
-  const totaldevelopers = data.filter(
-    (user) => user.role === 'developer'
-  ).length;
-  const totaldesigners = data.filter(
-    (user) => user.role === 'designers'
-  ).length;
+const ShowPieChart = ({ title, data }) => {
+  const entries = Object.entries(data);
 
   return (
     <Box
@@ -37,9 +31,9 @@ const ShowPieChart = ({ title, data, label }) => {
         series={[
           {
             data: [
-              { id: 0, value: totalmanagers, label: label[0] },
-              { id: 1, value: totaldevelopers, label: label[1] },
-              { id: 2, value: totaldesigners, label: label[2] },
+              { id: 0, value: entries[0][1], label: entries[0][0] },
+              { id: 1, value: entries[1][1], label: entries[1][0] },
+              { id: 2, value: entries[2][1], label: entries[2][0] },
             ],
           },
         ]}
