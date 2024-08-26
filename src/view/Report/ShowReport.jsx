@@ -8,7 +8,7 @@ import ShowLineChart from './ShowLineChart';
 
 const ShowReport = () => {
   const { userList } = useAppSelector((state) => state.userReducer);
-  const totalusers = userList.length;
+  // const totalusers = userList.length;
 
   const totalmanagers = userList.filter(
     (user) => user.role === 'manager'
@@ -28,17 +28,30 @@ const ShowReport = () => {
     (user) => user.gender === 'nonbinary'
   ).length;
 
-  const numberbyroles = {
-    manager: totalmanagers,
-    developer: totaldevelopers,
-    designer: totaldesigners,
-  };
+  // const numberbyroles = {
+  //   manager: totalmanagers,
+  //   developer: totaldevelopers,
+  //   designer: totaldesigners,
+  // };
 
   const numberbygender = {
     female: totalfemale,
     male: totalmale,
     nonbindary: totalnonbinary,
   };
+
+  const numberbyroles = {};
+
+  userList.forEach((user) => {
+    const role = user.role;
+    if (numberbyroles[role]) {
+      numberbyroles[role]++;
+    } else {
+      numberbyroles[role] = 1;
+    }
+  });
+
+  console.log('the number by role', numberbyroles);
 
   // const rolelabel = ['manager', 'developer', 'designer'];
   // const genderlabel = ['female', 'male', 'nonbinary'];
@@ -57,7 +70,7 @@ const ShowReport = () => {
           Report
         </Typography>
         <Stack direction="row" spacing={3} mt={'50px'}>
-          <ShowNumberComp title={'Total Users'} number={totalusers} />
+          <ShowNumberComp title={'Total Users'} number={userList.length} />
           <ShowNumberComp title={'Total Managers'} number={totalmanagers} />
           <ShowNumberComp title={'Total Developers'} number={totaldevelopers} />
           <ShowNumberComp title={'Total Designers'} number={totaldesigners} />
