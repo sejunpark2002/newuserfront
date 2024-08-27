@@ -9,19 +9,17 @@
 
 The User Management App is a solution built using React for managing user-related tasks, including creating, updating, deleting, and retrieving user information
 
-## Why?
-
-Finding and connecting with startups that align with specific interests or investment goals can be challenging due to the sheer volume of participants in major events like the Web Summit. StartupFinder.co was created to solve this problem by offering a centralized platform where users can efficiently search and filter startups by category, access their websites, and connect with them on LinkedIn. The goal is to streamline the discovery process and foster valuable connections between users and startup
 
 ## Features
 
 - Built on React + MUI
+- NodeJS + MongoDB for Backend
 - Global state management Redux
 - Create User
 - Edit User
 - Delete User
 - Analytics
- - View a report of all the metrics regarding your usrs
+ -- View a report of all the metrics regarding your usrs
 - Pagination of the list of users
 
 
@@ -34,7 +32,7 @@ Finding and connecting with startups that align with specific interests or inves
 
 - **React** 
 - **MUI** 
-- **React Custom Hook** 
+- **Redux** 
 - **NodeJS** 
 - **useForm** 
 
