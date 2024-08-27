@@ -1,3 +1,10 @@
+
+<div align="center">
+  <a href="https://usermanagement-sjp.netlify.app/">
+    <img src="./src/images/userlogo.png" alt="Logo" width="70" height="70">
+  </a>
+</div>
+
 # User Management
 
 The User Management App is a solution built using React for managing user-related tasks, including creating, updating, deleting, and retrieving user information
@@ -8,9 +15,13 @@ Finding and connecting with startups that align with specific interests or inves
 
 ## Features
 
+- Built on React + MUI
+- Global state management Redux
 - Create User
 - Edit User
 - Delete User
+- Analytics
+ - View a report of all the metrics regarding your usrs
 - Pagination of the list of users
 
 
